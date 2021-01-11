@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const Book = require('../models/book')
 
 // All Users Route
 router.get('/', async (req, res) => {
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
     }
     try {
         const users = await User.find(searchOptions)
-        res.render('users/index', { 
+        res.render('users/index', {
             users: users,
             searchOptions: req.query
         })
@@ -31,13 +32,69 @@ router.post('/', async (req, res) => {
     })
     try {
         const newUser = await user.save()
-        // res.redirect(`users/${newUser}`)
-        res.redirect(`users`)
+        res.redirect(`users/${newUser}`)
     } catch {
         res.render('users/new', {
             user: user,
             errorMessage: 'Error creating User'
         })
+    }
+})
+
+router.get('/:id', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        const books = await Book.find({ user: user.id }).limit(5).exec()
+        res.render('users/show', {
+            user: user,
+            booksByUser: books
+        })
+    } catch {
+        res.redirect('/')
+    }
+})
+
+router.get('/:id/edit', async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        res.render('users/edit', { user: user })
+    } catch {
+        res.redirect('/users')
+    }
+})
+
+router.put('/:id', async (req, res) => {
+    let user
+    try {
+        user = await User.findById(req.params.id)
+        user.name = req.body.name
+        await user.save()
+        res.redirect(`/users/${user.id}`)
+    } catch {
+        if (user == null) {
+            res.redirect('/')
+        } else {
+            res.render('users/edit', {
+                user: user,
+                errorMessage: 'Error updating User'
+            })
+
+        }
+    }
+})
+
+router.delete('/:id', async (req, res) => {
+    let user
+    try {
+        user = await User.findById(req.params.id)
+        await user.remove()
+        res.redirect('/users')
+    } catch {
+        if (user == null) {
+            res.redirect('/')
+        } else {
+            res.redirect(`/users/${user.id}`)
+        }
     }
 })
 
