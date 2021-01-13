@@ -1,4 +1,4 @@
-<h2>User</h2>
+<h2 class="page-header">User</h2>
 <form action="/users" method="GET">
     <label>Name</label>
     <input type="text" name="name" value="<%= searchOptions.name %>">
@@ -9,7 +9,9 @@
     <div>
         <%= user.name %>
     </div>
-    <a href="/users/<%= user.id %>">View</a>
-    <a href="/users/<%= user.id %>/edit">Edit</a>
-    <%- include('../partials/deleteForm', { url: `/users/${user.id}` }) %>
+    <div class="btn-row">
+        <a class="btn btn-primary" href="/users/<%= user.id %>">View</a>
+        <a class="btn btn-primary" href="/users/<%= user.id %>/edit">Edit</a>
+        <%- include('../partials/deleteForm', { url: `/users/${user.id}` }) %>
+    </div>
     <% }) %>

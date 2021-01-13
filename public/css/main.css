@@ -1,0 +1,35 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap");
+@import "var.css";
+@import "header.css";
+@import "buttons.css";
+
+:root {
+  font-family: "Fraunces", serif;
+  font-size: 1.25rem;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-light);
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 3rem;
+}
+
+.inner-container {
+    margin: 0 2rem;
+}
+
+.page-header {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
