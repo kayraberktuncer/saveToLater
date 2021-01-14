@@ -1,34 +1,40 @@
-<div>
+<div class="form-row">
+  <div class="form-item">
     <label>Title</label>
     <input type="text" name="title" value="<%= book.title %>">
   </div>
-  <div>
+  <div class="form-item">
     <label>User</label>
     <select name="user">
-    <% users.forEach(user => { %>
-      <% if (user.id === book.user) { %>
-        <option selected label="<%= user.name %>" value="<%= user.id %>">
-      <% } else { %>
-        <option label="<%= user.name %>" value="<%= user.id %>">
-      <% } %>
-    <% }) %>
+      <% users.forEach(user=> { %>
+        <% if (user.id===book.user) { %>
+          <option selected label="<%= user.name %>" value="<%= user.id %>">
+            <% } else { %>
+          <option label="<%= user.name %>" value="<%= user.id %>">
+            <% } %>
+              <% }) %>
     </select>
   </div>
-  <div>
+</div>
+<div class="form-row">
+  <div class="form-item">
     <label>Date</label>
     <input type="date" name="publishDate"
-          value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
+      value="<%= book.publishDate == null ? '' : book.publishDate.toISOString().split('T')[0] %>">
   </div>
-  <div>
+  <div class="form-item">
     <label>Length</label>
     <input type="text" name="pageCount" min="1" value="<%= book.pageCount %>">
   </div>
-  </div>
-  <div>
+</div>
+
+<div class="form-row">
+  <div class="form-item form-item-no-grow">
     <label>Cover</label>
     <input type="file" name="cover" class="filepond">
   </div>
-  <div>
+  <div class="form-item">
     <label>Description</label>
     <textarea name="description"><%= book.description %></textarea>
   </div>
+</div>

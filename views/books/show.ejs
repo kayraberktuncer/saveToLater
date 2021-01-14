@@ -10,8 +10,8 @@
 </div>
 <div>Description: <%= book.description %>
 </div>
-
-<a href="/books/<%= book.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', 
-{url: `/books/${book.id}`}) %>
-<a href="/users/<%= book.user.id %>">View User</a>
+<div class="btn-row">
+    <a class="btn btn-primary" href="/books/<%= book.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm', {url: `/books/${book.id}`}) %>
+    <a class="btn btn-primary" href="/users/<%= book.user.id %>">View User</a>
+</div>

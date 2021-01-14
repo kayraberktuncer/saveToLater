@@ -1,8 +1,10 @@
 <h2 class="page-header">
     <%= user.name %>
 </h2>
-<a href="/users/<%= user.id %>/edit">Edit</a>
-<%- include('../partials/deleteForm', {url: `/users/${user.id}`}) %>
+<div class="btn-row">
+    <a class="btn btn-primary" href="/users/<%= user.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm', {url: `/users/${user.id}`}) %>
+</div>
 <% if (booksByUser.length> 0) { %>
     <h2>Bookmarks By User</h2>
     <% booksByUser.forEach(book=> { %>

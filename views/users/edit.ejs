@@ -1,6 +1,8 @@
 <h2 class="page-header">Edit User</h2>
 <form action="/users/<%= user.id %>?_method=PUT" method="POST">
-    <%- include('./_form_fields')%> 
-    <a href="/users/<%= user.id %>">Cancel</a>
-    <button type="submit">Update</button>
+    <div class="form-row form-row-end btn-row">
+        <%- include('./_form_fields')%>
+            <a class="btn btn-danger" href="/users/<%= user.id %>">Cancel</a>
+            <button class="btn btn-primary" type="submit">Update</button>
+    </div>
 </form>
