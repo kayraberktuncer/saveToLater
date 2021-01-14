@@ -4,14 +4,18 @@
 @import "header.css";
 @import "buttons.css";
 @import "form.css";
+@import "user.css";
+@import "books.css";
 
 :root {
   font-family: "Fraunces", serif;
   font-size: 1.25rem;
 }
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
@@ -19,18 +23,21 @@ body {
   color: var(--color-text-light);
 }
 
-
 .container {
-    max-width: 1200px;
-    margin: auto;
-    margin-bottom: 3rem;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 3rem;
 }
 
 .inner-container {
-    margin: 0 2rem;
+  margin: 0 2rem;
 }
 
 .page-header {
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+.error-message {
+  color: var(--color-btn-danger-background);
 }

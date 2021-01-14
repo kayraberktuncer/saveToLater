@@ -6,10 +6,6 @@
     <%- include('../partials/deleteForm', {url: `/users/${user.id}`}) %>
 </div>
 <% if (booksByUser.length> 0) { %>
-    <h2>Bookmarks By User</h2>
-    <% booksByUser.forEach(book=> { %>
-        <a href="/books/<%= book.id %>">
-            <img height="150" width="100" src="<%= book.coverImagePath %>">
-        </a>
-    <% }) %>
+    <h2 class="page-header">Bookmarks By User</h2>
+    <%- include('../partials/bookGrid', { books: booksByUser }) %>
 <% } %>
