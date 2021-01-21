@@ -1,4 +1,5 @@
 const Book = require('../models/book')
+const User = require('../models/user')
 
 const indexController = async (req, res) => {
     let books
@@ -10,4 +11,32 @@ const indexController = async (req, res) => {
     res.render('index', { books: books })
 }
 
-module.exports = indexController
+const booksApi = async(req,res) => {
+    Book.find({}, (err, books) => {
+        let bookMap = {};
+    
+        books.forEach((book) => {
+            bookMap[book._id] = book.title;
+        });
+    
+        res.send(bookMap);  
+      });
+}
+
+const usersApi = async(req,res) => {
+    User.find({}, (err, users) => {
+        let userMap = {};
+    
+        users.forEach((user) => {
+            userMap[user._id] = user.name;
+        });
+    
+        res.send(userMap);  
+      });
+}
+
+module.exports ={
+    indexController,
+    booksApi,
+    usersApi
+} 
